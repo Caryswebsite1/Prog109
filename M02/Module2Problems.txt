@@ -1,0 +1,10 @@
+Problems:
+
+1. Using valign and align inside a <td> tag is considered "obsolete" by the validator.  
+Since we are not allowed to use CSS, I could not find any other way to correctly format a number of cells
+per the formatting shown in the example picture.  The primary assignment submission passes the validator but 
+does not have the same alignment formating as the picture of the table we were to reproduce.
+
+2.  I have included a secondary submission which has the correct alignment formatting in all cells but
+does not pass the validator check for reasons noted in #1 above.
+

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="Viewport" content="width=device-width">
+    <title>Module 02</title>
+
+    <style>
+        th, td {
+            border: 1px solid white;
+            border-spacing: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Module 02:  Tables</h1>
+
+    <h2>Created by:  Cary Gibson </h2>
+
+   
+    <table style="width:100%; background-color:darkgrey; border:2px solid black; border-spacing:0px">
+        <!-- expands with browser size, black border -->
+        <!--Row 1. spans all 3 columns with h1-->
+
+        <thead style="text-align:center">
+            <tr>
+                <td colspan="3"><h1>HTML Example Table</h1></td>
+            </tr>
+        </thead>
+
+        <!--Row 2, 1st cell is a pic that takes a bunch of space but doesn't span rows. text uses h2 -->
+        <tr>
+            <td> <h2> <img src="Sugar-Cookies-13.jpg" alt="Sugar Cookies" width="150" height="150" title="Chewy Sugar Cookies" /> </h2> </td>
+            <td><h2>Meal Planner</h2></td> <!--using th centers the data in the cell-->
+            <td><h2>Recipe Index &#35;</h2></td>
+        </tr>
+
+        <!--Row 3, uses th tag -->
+        <tr>
+            <th>Week Starting</th>
+            <th>2/15/18</th>
+            <th>Instructions</th>
+        </tr>
+
+        <!--Row 4, uses b also last row item spans  8 rows-->
+        <tr>
+            <td style="height:40px"><b>Day of the Week</b></td>
+            <td style="height:40px"><b>Recipe Name</b></td>
+            <td rowspan="8">Add the name of the recipe under the column Recipe Name </td>
+        </tr>
+
+        <!-- Rows 5 - 11 just have 2 items.  Regular format-->
+        <tr>
+            <td style="height:40px">Monday</td>
+            <td style="height:40px">Spinach Feta Pizza</td>
+        </tr>
+
+        <tr>
+            <td style="height:40px">Tuesday</td>
+            <td style="height:40px">My New Recipe</td>
+        </tr>
+
+        <tr>
+            <td>Wednesday</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Thursday</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Friday</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Saturday</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Sunday</td>
+            <td></td>
+        </tr>
+
+
+    </table>
+
+
+</body>
+</html>
