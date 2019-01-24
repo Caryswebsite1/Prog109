@@ -12,13 +12,13 @@ h1 {
     font-size: 400%;
 }
 
-
 p {
     font-family: 'DancingScriptRegular';
     font-weight: normal;
     font-style: normal;
     font-size: 200%;
 }
+
 h1, h2, p {
     padding: 12px;
     line-height: 2em;
