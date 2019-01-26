@@ -1,21 +1,8 @@
-﻿body {
+
+body {
     background-image: url("images/Aurora.jpg");
 }
 
-/* container for the whole mess 
-#stage {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: auto;
-    margin-top: 12%;
-    margin-left: 0%;
-    margin-right: 0%;
-    margin-bottom: 0%;
-}
-
-*/
 
 #container {
     margin-top: 12%;
@@ -76,7 +63,7 @@
     float: left;
 }
 
-div.clear {
+.clear {
     clear: both;
 }
 
