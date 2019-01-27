@@ -1,0 +1,83 @@
+﻿
+* {
+    font-family: Arial, Verdana, sans-serif;
+    color: #665544;
+    text-align: center;
+}
+
+body {
+    width: 90%;
+    margin: 0 auto;
+    background-image:url("images/MincePie.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+#content {
+    overflow: auto;
+}
+
+#nav, #feature, #footer {
+    margin: 1%;
+}
+
+.column1, .column2, .column3 {
+    width: 31.3%;
+    float: left;
+    margin: 1%;
+}
+
+.column1 {
+    background-color:aqua;
+}
+
+.column2 {
+    background-color:aquamarine;
+}
+
+.column3 {
+    margin-right: 0%;
+    background-color:deepskyblue;
+}
+
+li {
+    display: inline;
+    padding: 0.5em;
+}
+
+#nav, #footer {
+     padding: 0.5em 0;
+}
+
+#nav {
+    background-color: chartreuse;
+}
+
+#feature, .article {
+    height: 10em;
+    margin-bottom: 1em;
+}
+
+
+#feature {
+    background-color: cornflowerblue;
+    background-image: url("images/GrilledSalmon.jpg");
+    background-size:contain;
+    background-position:right;
+    background-repeat: no-repeat;
+}
+
+/* make logo have a different font */
+#logoFont {
+    font-family: 'AvaraBold';
+    font-weight: normal;
+    font-style: normal;
+    color: red;
+} 
+
+
+#footer {
+    background-color: #ff0064;
+    color:white;
+}
+
