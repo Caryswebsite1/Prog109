@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="Viewport" content="width=device-width">
+    <meta name="description" content="Cary's World and interests" />
+    <meta name="keywords" content="Cary, Programmer, Spacecraft, USAF Officer" />
+
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/kolar" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="ProjectStyleSheet.css" />
+
+    <title>Contact Me</title>
+
+
+    <script>
+        /*
+        window.addEventListener("load", init);
+
+        function init() {
+
+            var button = document.getElementById("formSubmitButton");
+            button.addEventListener("click", sayThanks);
+
+        }// end init
+
+
+        function sayThanks() {
+
+            // need to load thankyou page....
+            window.open("Thankyou.html", "_self");
+        }// end sayThanks
+        */
+    </script>
+
+
+</head>
+
+<body>
+
+    <div id="topmenu">
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Coursework.html">Coursework</a></li>
+            <li><a href="Artifacts.html">Artifacts</a></li>
+            <li><a href="ModuleAssignments.html">Module Assignments</a></li>
+            <li><a href="ContactMe.html">Contact Me</a></li>
+            <li><a href="PersonalInterests.html">Personal Interests</a></li>
+        </ul>
+
+    </div>  <!-- end div Top Menu -->
+
+    <div id="contentWrapper">
+
+        <div id="myHeader">Contact Me!</div>
+
+
+        <!--  <form autocomplete="off"> -->
+
+        <form action="Thankyou.html" method="get" name="myContact">
+            <fieldset id="ContactingMeInfo">
+                <legend>Contact Information</legend>
+
+                <label for="YourName">Your Name: </label>
+                <input type="text" name="YourName" id="YourName" placeholder="Your Name" />
+
+                <label for="EmailInput">Your Email:</label>
+                <input type="text" name="EmailInput" id="EmailInput" placeholder="Your Email" />
+
+                <label for="SubjectInput">Subject:</label>
+                <input type="text" name="SubjectInput" id="SubjectInput" placeholder="Subject" />
+
+                <label for="CommentsInput">Comments:</label>
+                <div id="Comments">
+                    <input type="text" name="Comments" id="CommentsInput" placeholder="What can I do for you!?" />
+                </div> <!-- end div Comments -->
+
+                <br />
+                <div id="ContactSubmit">
+                    <!--  <input type="button" id="formSubmitButton" value="Submit" />  -->
+                    <input type="submit" value="Submit" />
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div> <!-- end div content wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+﻿
+/* Make sure older browsers at least display the new stuff as block */
+header, section, footer, aside, nave, article, figure, figcaption{
+    display:block;
+}
+
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: aqua;
+    font-family: 'KolarRegular';
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+body {
+    background-image: url("Images/OrionNebula_cropped_1400.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+
+#topmenu {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 8px 0px 0px 0px;
+    height: 30px; 
+    min-height:30px;
+    overflow: auto;
+    background: aqua;
+}
+
+    #topmenu ul {
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+ 
+    }
+
+        #topmenu ul:first-child {
+            padding: 0px 20px 0px 20px;
+        }
+
+
+
+    #topmenu li {
+        float: left;
+        padding: 0px 20px 0px 0px;
+        
+    }
+
+
+
+
+        #topmenu li a {
+            display: block;
+            text-decoration: none;
+            
+        }
+
+.search {
+    padding: 0px 20px 0px 5px;
+    display: block;
+    float: right;
+}
+
+
+/* need a wrapper for everything to have it show ontop of the image.
+    Position it right below the menu
+*/
+
+#contentWrapper {
+    position: fixed;
+    top: 38px;
+    left: 0px;
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+    height: 100%;
+
+}
+
+
+#myHeader {
+    font-size: 36px;
+    color: aqua; /*  #99f2ff;*/
+    text-align: center;
+    margin: 20px 0px 0px 0px;
+}
+
+
+/* Artifacts Page Related*/
+#ArtifactsContainer {
+    position: relative;
+    top: 20%;
+    width: 80%;
+    height: 25%;
+    margin: 0 auto 0 auto;
+  
+}
+
+ 
+    .Artifacts {
+        display: block;
+        float: left;
+        width: 18%;
+        height: 100%;
+        padding: 0% 1% 0% 1%;
+    }
+
+
+    .Artifacts img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .Artifacts p {
+        background-color: rgbA(0, 0, 200, 0.35);
+        font-family: 'KolarRegular';
+        font-weight: normal;
+        font-style: normal;
+        font-size:1.25vw;  /* dynamic sizing: a vw is 1% of current viewport width */
+
+    }
+
+
+    /*make the text links show up better*/
+#ArtifactsContainer a:link {
+    color: aqua;
+}
+
+#ArtifactsContainer a:visited {
+    color:darkcyan;
+}
+
+#ArtifactsContainer a:hover {
+    color: hotpink;
+}
+
+#ArtifactsContainer a:active {
+    color: red;
+}
+
+
+/* Contact Me page related    margin: 10px 0px 0px 5%;*/
+fieldset#ContactingMeInfo {
+    position: relative;
+    top: 88px;
+    background-color: rgbA(0, 0, 200, 0.35);
+    border: 2px solid rgb(0,0,0);
+    width: 40%;
+    min-width: 430px;
+    color: aqua;
+    margin: 0 auto 0 auto;
+}
+
+#ContactingMeInfo label {
+    clear: left;
+    display: block;
+    float: left;
+    font-size: 0.9em;
+    margin: 7px 2% 7px 5px;
+    width: 20%;
+}
+
+
+#ContactingMeInfo input {
+    display: block;
+    float: left;
+    font-size: 0.9em;
+    margin: 7px 0px;
+    width: 75%;
+}
+
+
+#Comments input{
+    display: block;
+    float: left;
+    font-size: 0.9em;
+    margin: 7px 0px;
+    width: 75%;
+    height:100px;
+}
+
+#ContactSubmit input {
+    display: block;
+    float: left;
+    font-size: 0.9em;
+    margin: 7px 0px;
+    width: 25%;
+
+}
