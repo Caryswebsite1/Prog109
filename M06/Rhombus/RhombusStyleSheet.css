@@ -5,8 +5,8 @@
 
 #container {
     margin: 25px auto;
-    background-color: OldLace;
-    border: 1px solid Silver;
+    background-color: #FFBB00;
+    border: 8px ridge gold;
     width: 300px;
     height: auto;
     padding: 10px 30px;
