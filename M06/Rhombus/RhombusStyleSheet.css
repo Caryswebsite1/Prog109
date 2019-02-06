@@ -1,11 +1,32 @@
-﻿html, body
+html, body
 {
     background-color: black;
 }
 
+
+#myHeading {
+    font-family: 'AbibasMedium';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 28px;
+    color: #9900FF;
+    text-align: center;
+}
+
+
+#myName {
+    font-family: 'DancingScriptRegular';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    color: #9900FF;
+    text-align: center;
+}
+
+
 #container {
     margin: 25px auto;
-    background-color: #FFBB00;
+    background-color: #FFbb00;
     border: 8px ridge gold;
     width: 300px;
     height: auto;
@@ -14,10 +35,12 @@
 
 #RhomTitle {
     display: block;
-    font-size: 20px;
+    font-family: 'AbibasMedium';
+    font-style: normal;
+    font-size: 22px;
     font-weight: 600;
-    color: blueviolet;
-    text-align:center;
+    color: #9900FF;
+    text-align: center;
 }
 
 
@@ -40,9 +63,9 @@
     display: block;
     width: 15px;
     height: 15px;
-    background-color: OldLace;
+    background-color: Silver;
     margin: 1px 0px 0px 8px;
-    border: 1px solid LightGray;
+    border: 1px solid black;
     float:left;
 
 }
