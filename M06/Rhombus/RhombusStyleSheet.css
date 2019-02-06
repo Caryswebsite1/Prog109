@@ -1,0 +1,60 @@
+﻿html, body
+{
+    background-color: black;
+}
+
+#container {
+    margin: 25px auto;
+    background-color: OldLace;
+    border: 1px solid Silver;
+    width: 300px;
+    height: auto;
+    padding: 10px 30px;
+}
+
+#RhomTitle {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    color: blueviolet;
+    text-align:center;
+}
+
+
+#upRight {
+    display: block;
+    text-align: center;
+}
+
+#downRight {
+    display: block;
+    text-align: center;
+}
+
+.clearIt{
+    clear:both;
+}
+
+
+#EvenColorPic, #OddColorPic{
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: OldLace;
+    margin: 1px 0px 0px 8px;
+    border: 1px solid LightGray;
+    float:left;
+
+}
+
+#colorOdd, #colorEven{
+    display: block;
+    float: left;
+}
+
+label{
+    clear:both;
+}
+#symbol {
+    clear:both;
+}
