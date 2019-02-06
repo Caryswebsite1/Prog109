@@ -1,4 +1,4 @@
-html, body
+﻿html, body
 {
     background-color: black;
 }
@@ -44,35 +44,30 @@ html, body
 }
 
 
-#upRight {
+#upSide, #downSide {
     display: block;
     text-align: center;
 }
 
-#downRight {
-    display: block;
-    text-align: center;
-}
+
 
 .clearIt{
     clear:both;
 }
 
 
-#EvenColorPic, #OddColorPic{
+#EvenColorPic, #OddColorPic {
     display: block;
     width: 15px;
     height: 15px;
-    background-color: Silver;
+    background-color: #FFbb00;
     margin: 1px 0px 0px 8px;
     border: 1px solid black;
-    float:left;
-
+    float: left;
 }
 
 #colorOdd, #colorEven{
     display: block;
     float: left;
 }
-
 
