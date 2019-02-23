@@ -28,7 +28,12 @@ body {
 }
 
 
-
+#myHeader {
+    font-size: 36px;
+    color: aqua; /*  #99f2ff;*/
+    text-align: center;
+    margin: 20px 0px 0px 0px;
+}
 
 
 
