@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta name="description" content="Prog 109, module 09 - Events & Handlers">
+    <meta charset="utf-8">
+    <meta name="Viewport" content="width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="css/DotStyleSheet.css" />
+
+    <title>Module 09</title>
+
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="myTitle">Dot Draw</div>
+        <br />
+        <div style="text-align:center"> Select a number from 0 to 255 for each color value</div>
+        <br />
+        <form autocomplete="off">
+
+            <fieldset id="RedBox">
+                <label>Red:</label>
+                <input class="colorBox" type="text" maxlength="3" name="RedColorText" id="RedColorText" placeholder="xxx" />
+            </fieldset>
+
+            <fieldset id="GreenBox">
+                <label>Green:</label>
+                <input class="colorBox" type="text" maxlength="3" name="GreenColorText" id="GreenColorText" placeholder="xxx" />
+            </fieldset>
+
+            <fieldset id="BlueBox">
+                <label>Blue:</label>
+                <input class="colorBox" type="text" maxlength="3" name="BlueColorText" id="BlueColorText" placeholder="xxx" />
+            </fieldset>
+
+        </form>
+
+        <button id="DrawBtn">Draw the Dot!</button><br />
+        <button id="clear">Clear all</button>
+        <div id="ColorBar"></div>
+        <div id="DrawArea"></div>
+        <br />
+       
+
+    </div> <!-- end container div -->
+    <!--
+        <div id="myHeader"> DOT </div>
+        <div id="MainDrawing"></div>
+        <div id="buttons">
+            <button id="clearBtn">Clear</button>
+
+        </div>
+
+    -->
+
+    <script src="js/DotProgram.js"></script>
+
+</body>
+
+
+</html>
