@@ -8,15 +8,18 @@
 
 body {
     font-family: Verdana, Arial, sans-serif;
+    background-image: url("../images/polkaDots.jpg");
+    background-repeat:repeat;
+    background-position: center;
 }
 
 #container {
-    position:relative;
+    position: relative;
     margin: 25px auto;
     background-color: OldLace;
     border: 1px solid Silver;
-    width: 350px;
-    height: 250px;
+    width: 700px;
+    height: 600px;
     padding: 10px 30px;
 }
 
@@ -30,25 +33,29 @@ body {
 }
 
 #ColorBar {
+    
     display: block;
     width: 200px;
     height: 20px;
     background-color: white;
-    margin-top: 15px auto;
+    margin-top: 10px;
     border: 1px solid LightGray;
- 
-
-    
+   
 }
 
+#AreaHeader {
+    color: blueviolet;
+    text-align: center;
+    font-size: 16px;
+}
 
 #DrawArea {
-    display:block;
-    width: 2px;
-    height: 1px;
-    background-color: red;
-    border: 1px solid LightGray;
-    margin: 20px auto;
+    display: block;
+    width: 680px;
+    height: 350px;
+    background-color: white;
+    border: 5px inset goldenrod;
+    margin: 10px auto;
 }
 
 fieldset{
@@ -64,6 +71,7 @@ label {
 
 button {
     margin-bottom: 4px;
+   
 }
 
 input {
@@ -73,7 +81,13 @@ input {
 #myTitle{
     color:blueviolet;
     text-align:center;
-    font-size: 26px;
+    font-size: 20px;
+}
+
+#colorSelectText {
+    color: blueviolet;
+    text-align:left;
+    font-size: 12px;
 }
 
 .dot {
