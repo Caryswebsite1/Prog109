@@ -224,6 +224,8 @@ function ResStopHit() {
     // check data state of button.  switch based on that.  
     // will either stop or start timer.  
 
+    console.log("in resStop. Current slide: " + G_SlideNum);
+
     var buttonState = BtnResStop.getAttribute("data-State");
 
     switch (buttonState) {
@@ -239,16 +241,27 @@ function ResStopHit() {
             G_MainSlide.style.opacity = 1;
             G_MainCaption.setAttribute("class", "");
             G_MainCaption.style.opacity = 1;
+
+            // since we stopped, reset slide number to current one being shown.
+            // so next and previous button handlers work.
+            G_SlideNum -= 1;
+            if (G_SlideNum < 0) {
+                G_SlideNum = G_MaxIndex;
+            }
             break;
 
         case "Resume":
             // restart show and change button text to stop.
             // increment slide number and go around the end if needed.
             // reset animation to work by resetting the class and opacity.
+
+            // since we are resuming, reset slide number to next slide
+            // so ShowCurrentSlide will show correct one on startup.
             G_SlideNum += 1;
             if (G_SlideNum > G_MaxIndex) {
                 G_SlideNum = 0;
             }
+
             G_MainSlide.setAttribute("class", "myfading");
             G_MainSlide.style.opacity = "";
             G_MainCaption.setAttribute("class", "myfading");
