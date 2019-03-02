@@ -90,6 +90,18 @@ function init() {
     G_MainCaption.setAttribute("class", "");
     G_MainCaption.style.opacity = 1;
 
+    // on slower connections, image loading time is causing a stutter effect first time through..
+    // sooooo, trying something here to eliminate that. Kind of a preload effort for the images:
+
+    let tempArray[] = [];
+
+    for (i = 0; i <= G_MaxIndex; i++) {
+        tempArray[i] = document.createElement("image");
+        tempArray[i].setAttribute("src", G_MainSlide[i][0]);
+    }
+    // at this point, we have hopefully forced the load of the images without showing them...
+    // we can throw the temp array away at the end of this function.
+
 
     ShowCurrentSlide();
 
