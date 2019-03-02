@@ -36,6 +36,7 @@ let BtnResStop = document.getElementById("StopResume");
 
 // disable buttons for now:
 // make sure buttons are non operational till we enable in init function
+// to avoid problems during load.
 BtnPrevious.disabled = true;
 BtnPrevious.hidden = true;
 BtnNext.disabled = true;
@@ -72,6 +73,34 @@ G_MainSlideArray[4][1] = "The Gateway!";
  * ******************************************************* */
 function init() {
 
+    //----------------------------------------------------------------------------------------------
+    // NOTE:  on slower connections, image loading time is causing a stutter effect first time through..
+    // sooooo, trying something here to eliminate that. Kind of a preload effort for the images:
+    //-----------------------------------------------------------------------------------------
+    G_MainSlide.setAttribute("class", "");  // eliminate the animation for the main slide.. 
+    G_MainSlide.style.opacity = 0; // insure it can't be seen.
+
+    // Attempt to load all images into main slide so the browser will have them available during main run.
+    let i = 0;
+    for (i = 0; i <= G_MaxIndex; i++) {
+        G_MainSlide.setAttribute("src", G_MainSlideArray[i][0]);
+    }
+    // --------------------------------------------------------------------------------------
+    // At this point, we have hopefully forced the load of the images without showing them...
+    //-----------------------------------------------------------------------------------------
+
+
+    // set up for static showing to start:
+    G_MainSlide.setAttribute("class", "");
+    G_MainSlide.style.opacity = 1;
+    G_MainCaption.setAttribute("class", "");
+    G_MainCaption.style.opacity = 1;
+
+    // logs.
+    console.log("main slide var:");
+    console.log(G_MainSlide);
+    console.log(G_MainCaption);
+
     // make sure buttons are visable and operational
     BtnPrevious.disabled = false;
     BtnPrevious.hidden = false;
@@ -84,25 +113,7 @@ function init() {
     // set starting slide number
     G_SlideNum = 0;
 
-    // set up for static showing to start:
-    G_MainSlide.setAttribute("class", "");
-    G_MainSlide.style.opacity = 1;
-    G_MainCaption.setAttribute("class", "");
-    G_MainCaption.style.opacity = 1;
-
-    console.log("main slide var:");
-    console.log(G_MainSlide);
-    console.log(G_MainCaption);
-
-    // on slower connections, image loading time is causing a stutter effect first time through..
-    // sooooo, trying something here to eliminate that. Kind of a preload effort for the images:
-
-    var i = 0;
-    for (i = 0; i <= G_MaxIndex; i++) {
-        G_MainSlide.setAttribute("src", G_MainSlideArray[i][0]);
-     }
-    // at this point, we have hopefully forced the load of the images without showing them...
-    
+   // finally, show the 1st slide and caption.
     ShowCurrentSlide();
    
 }// end init
@@ -114,18 +125,17 @@ function init() {
  * Shows the current slide with caption.
  * ******************************************************* */
 function ShowCurrentSlide() {
+    // logs
     console.log("in show slide.  current slide num: " + G_SlideNum);
-
-    G_MainSlide.setAttribute("src", G_MainSlideArray[G_SlideNum][0]);
-
     console.log(G_MainSlide.getAttribute("src"));
     console.log(G_MainSlide.innerHTML);
 
+    // set up slide souce and caption which will force the change on the screen.
+    G_MainSlide.setAttribute("src", G_MainSlideArray[G_SlideNum][0]);
     G_MainCaption.innerHTML = G_MainSlideArray[G_SlideNum][1];
 
-
     // if in slideshow running mode, then increment the slide for the next round.
-    var buttonState = BtnResStop.getAttribute("data-State");
+    let buttonState = BtnResStop.getAttribute("data-State");
     if (buttonState === "Stop") {
         // currently running.
         // increment the slide counter and go around end if needed
@@ -134,7 +144,6 @@ function ShowCurrentSlide() {
             G_SlideNum = 0;
         }
     }// end if
-
      
 }// end ShowCurrentSlide
 
@@ -169,17 +178,10 @@ function previousHit() {
     // first stop the show via the button handler so button text and data will be reset.
     // then decrement once to get to correct start slide number then proceed as normal.
  
-    var buttonState = BtnResStop.getAttribute("data-State");
+    let buttonState = BtnResStop.getAttribute("data-State");
     if (buttonState === "Stop") {
         // currently running.  call stop handler
         ResStopHit();
-
-        // decrement counter by 1:
-        G_SlideNum -= 1;
-        if (G_SlideNum < 0) {
-            G_SlideNum = G_MaxIndex;
-        }
-
     }// end if button state == stop
 
     // now proceed normally:
@@ -206,17 +208,10 @@ function nextHit() {
     // first stop the show via the button handler so button text and data will be reset.
     // then decrement once to get to correct start slide number then proceed as normal.
 
-    var buttonState = BtnResStop.getAttribute("data-State");
+    let buttonState = BtnResStop.getAttribute("data-State");
     if (buttonState === "Stop") {
         // currently running.  call stop handler
         ResStopHit();
-
-        // decrement counter by 1:
-        G_SlideNum -= 1;
-        if (G_SlideNum < 0) {
-            G_SlideNum = G_MaxIndex;
-        }
-
     }// end if button state == stop
 
     // now proceed normally:
@@ -232,6 +227,7 @@ function nextHit() {
 }// end nextHit
 
 
+
 /* ******************************************************
  * ResStopHit()
  * Resume / Stop button was hit. 
@@ -239,10 +235,8 @@ function nextHit() {
 function ResStopHit() {
     // check data state of button.  switch based on that.  
     // will either stop or start timer.  
-
-    console.log("in resStop. Current slide: " + G_SlideNum);
-
-    var buttonState = BtnResStop.getAttribute("data-State");
+    
+    let buttonState = BtnResStop.getAttribute("data-State");
 
     switch (buttonState) {
 
@@ -258,12 +252,17 @@ function ResStopHit() {
             G_MainCaption.setAttribute("class", "");
             G_MainCaption.style.opacity = 1;
 
-            // since we stopped, reset slide number to current one being shown.
-            // so next and previous button handlers work.
+
+            console.log("in resStop, case Stop: Before decrement, Current slide: " + G_SlideNum);
+
+            // since we were running and thus ShowCurrentSlide auto increments the current slide number,
+            // reset slide number to current one being shown so next and previous button handlers work.
             G_SlideNum -= 1;
             if (G_SlideNum < 0) {
                 G_SlideNum = G_MaxIndex;
             }
+
+            console.log(" case Stop: After Decrement, slide Number is: " + G_SlideNum);
             break;
 
         case "Resume":
@@ -271,21 +270,31 @@ function ResStopHit() {
             // increment slide number and go around the end if needed.
             // reset animation to work by resetting the class and opacity.
 
-            // since we are resuming, reset slide number to next slide
-            // so ShowCurrentSlide will show correct one on startup.
+            // slide number is current slide, so increment so we start show 
+            // with next slide.
+
+            console.log("in resStop, case Resume: Before increment, Current slide: " + G_SlideNum);
+
+            // once...
             G_SlideNum += 1;
             if (G_SlideNum > G_MaxIndex) {
                 G_SlideNum = 0;
             }
+            console.log(" case Resume: After increment, slide Number is: " + G_SlideNum);
 
             G_MainSlide.setAttribute("class", "myfading");
             G_MainSlide.style.opacity = "";
             G_MainCaption.setAttribute("class", "myfading");
             G_MainCaption.style.opacity = "";
 
+            console.log("case Resume: calling setInterval with slide Number: " + G_SlideNum);
+            
             G_IntervalTimer = setInterval(ShowCurrentSlide, G_WaitTime);
             BtnResStop.setAttribute("data-State", "Stop");
             BtnResStop.innerHTML = "Stop Show";
+
+            console.log("case Resume: calling ShowCurrentSlide with slide Number: " + G_SlideNum);
+            ShowCurrentSlide(); // showing next slide so I don't wait for interval showing the same slide.
             break;
 
     }// end switch
