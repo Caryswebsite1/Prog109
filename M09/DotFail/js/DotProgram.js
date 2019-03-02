@@ -5,8 +5,14 @@ var myDrawArea = document.getElementById("DrawArea");
 var redBox = document.getElementById("RedColorText");
 var greenBox = document.getElementById("GreenColorText");
 var blueBox = document.getElementById("BlueColorText");
+
+var radiusText = document.getElementById("RadiusText");
+
 var colorBar = document.getElementById("ColorBar");
 
+var errorBox = document.getElementById("ErrorDiv");  // so we can put out error messages.
+
+// button event listener
 clearButton.addEventListener("click", clearHandler, false);
 
 // and a mouse click handler.
@@ -66,12 +72,25 @@ function colorCheck() {
         case "RedColorText":
         case "GreenColorText":
         case "BlueColorText":
-            console.log("in keyHandler switch.");
+            console.log("in keyHandler, color text switch.");
             if (bValid != false) {
                 colorBar.style.backgroundColor = bValid; 
+                errorBox.innerHTML = "";  // clear previous error about colors
                 console.log("just changed bar color");
             }
             break;
+
+        case "RadiusText":
+            // user is inputting a new radius value for the dot
+            console.log("in keyhandler, radiusText switch.");
+            if (!validateRadius(radiusText.value)) {
+                errorBox.innerHTML = "Please enter a positive Radius value.";
+            }
+            else {
+                errorBox.innerHTML = "";  // clear previous error about radius
+            }
+            break;
+
     }// end switch
 
 }// end keyHandler
@@ -89,9 +108,15 @@ function colorCheck() {
 function DrawDotHandler(theEvent) {
 
     var theTarget = theEvent.target; 
+    var radiusOffset = Math.round(radiusText.value / 2);
+
+    console.log("radiusText.value is: " + radiusText.value);
+    console.log("radius offset is: " + radiusOffset);
 
     var bValid = colorCheck();  // check if colors are ok and returns valid color
+    var bRadiusOK = validateRadius(radiusText.value);  // check if current radius is ok.
 
+    console.log("Radius OK is: " + bRadiusOK);
 
     console.log("rgb: " + bValid);
     console.log("eventX: " + theEvent.pageX + ", eventY: " + theEvent.pageY + ", Draw AreaX: " + myDrawArea.offsetLeft + ", AreaY: " + myDrawArea.offsetTop);
@@ -105,31 +130,39 @@ function DrawDotHandler(theEvent) {
     console.log(theEvent);
 
      // validate position for next dot.  make sure we are in our drawing area.
-    if (theTarget.id === "DrawArea")  // if we are in the draw area and not overlapping another dot.
+    if (theTarget.id === "DrawArea")  // if we are in the draw area and and radius size ok.
     {
-        if (((theEvent.layerX - 4) > theTarget.offsetLeft) &&
-            ((theEvent.layerY - 4) > theTarget.offsetTop) &&
-            ((theEvent.layerX + 4) < (theTarget.offsetLeft + theTarget.clientWidth)) &&
-            ((theEvent.layerY + 4) < (theTarget.offsetTop + theTarget.clientHeight))
+        if (bValid === false) {
+            errorBox.innerHTML = "Please enter a number from 0 to 255 for each Color.";
+        }
+        else if (!bRadiusOK) {
+            errorBox.innerHTML = "Please enter a positive Radius value.";
+        }
+        else if (((theEvent.layerX - radiusOffset ) > theTarget.offsetLeft) &&
+            ((theEvent.layerY - radiusOffset) > theTarget.offsetTop) &&
+            ((theEvent.layerX + radiusOffset) < (theTarget.offsetLeft + theTarget.clientWidth)) &&
+            ((theEvent.layerY + radiusOffset) < (theTarget.offsetTop + theTarget.clientHeight))
 
         ) {
 
-            // validate the input values
-            if (bValid != false) {
+            console.log("inside draw, checking bValid and bRadiusOK: " + bValid + ", " + bRadiusOK);
+            errorBox.innerHTML = "";  // clear any previous error messages.
+
+
+                console.log("inside if.  About to create and draw dot.");
 
                 /* Creating a div with dot class. can have multiple on page */
                 var dot = document.createElement("div");
                 dot.className = "dot";
-                dot.style.left = (theEvent.layerX - 4) + "px";
-                dot.style.top = (theEvent.layerY - 4) + "px";
+                dot.style.left = (theEvent.layerX - radiusOffset) + "px";
+                dot.style.top = (theEvent.layerY - radiusOffset) + "px";
                 dot.style.backgroundColor = bValid;
+                dot.style.height = radiusText.value + "px";
+                dot.style.width = radiusText.value + "px";
+                dot.style.borderRadius = radiusOffset + "px";
                 myDrawArea.appendChild(dot);
-                dot.getAttribute
-            }// end if colors valid
-            else {
-                alert("You must enter a number from 0 to 255 for each color!");
-                //clear();
-            }
+               
+                console.log(dot);
         } // end if inside draw area
     }// end if target is DrawArea
     else if (theTarget.getAttribute("class") === "dot") {
@@ -165,6 +198,25 @@ function validate(n) {
 
 
 
+
+/* **************************************************************
+ * validateRadius:  called by keyup handler
+ * 
+ * Checks to see if radius given is valid.  if so returns true
+ * 
+ * **************************************************************** */
+function validateRadius(n) {
+    if (n <= 0 || n > 99 || isNaN(n)) {
+        // bad input
+        return false;
+    }
+    else {
+        return true;
+    }
+}// end validateRadius
+
+
+
 /* **************************************************************
  * clearHandler:  called by system on clear button hit
  * 
@@ -194,7 +246,12 @@ function clear() {
     redBox.value = "xxx";
     greenBox.value = "xxx";
     blueBox.value = "xxx";
+
+    radiusText.value = "xx";
+
     colorBar.style.backgroundColor = "white";
+
+    errorBox.innerHTML = "";
 
     // clear out all dots from draw area
 

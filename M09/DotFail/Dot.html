@@ -17,7 +17,7 @@
     <div id="container">
         <div id="myTitle">Dot Draw</div>
         <br />
-        <div id="colorSelectText"> Select a number from 0 to 255 for each color value</div>
+        <div id="colorSelectText"> Select a number from 0 to 255 for each Color value and enter a positive Radius value.</div>
         <br />
         <form autocomplete="off">
 
@@ -36,15 +36,23 @@
                 <input class="colorBox" type="text" maxlength="3" name="BlueColorText" id="BlueColorText" placeholder="xxx" />
             </fieldset>
 
+
+            <fieldset id="RadiusBox">
+                <label>Radius:</label>
+                <input class="colorBox" type="text" maxlength="2" name="RadiusText" id="RadiusText" placeholder="xx" />
+            </fieldset>
+
         </form>
 
 
         <button id="clear">Clear all</button>
+
         <br />
         <br />
         <br />
-        
-        <div id="ColorBar"></div> 
+
+        <div id="ColorBar"></div>
+        <div id="ErrorDiv"></div>
         <div id="AreaHeader">Drawing Area</div>
         <div></div>
         <div id="DrawArea"></div>

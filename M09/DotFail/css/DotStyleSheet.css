@@ -17,7 +17,7 @@ body {
     position: relative;
     margin: 25px auto;
     background-color: OldLace;
-    border: 1px solid Silver;
+    border: 5px inset blue;
     width: 700px;
     height: 600px;
     padding: 10px 30px;
@@ -31,6 +31,37 @@ body {
     float: left;
     text-align: center;
 }
+
+#RedBox {
+    color: red;
+    border: 1px solid red;
+}
+
+#GreenBox {
+    color: green;
+    border: 1px solid green;
+}
+
+#BlueBox {
+    color: blue;
+    border: 1px solid blue;
+}
+
+#RedColorText {
+    color: red;
+    border: 1px solid red;
+}
+
+#GreenColorText {
+    color: green;
+    border: 1px solid green;
+}
+
+#BlueColorText {
+    color: blue;
+    border: 1px solid blue;
+}
+
 
 #ColorBar {
     
@@ -47,6 +78,7 @@ body {
     color: blueviolet;
     text-align: center;
     font-size: 16px;
+    font-weight:600;
 }
 
 #DrawArea {
@@ -62,6 +94,7 @@ fieldset{
     display:block;
     float:left;
 }
+
 
 
 label {
@@ -88,12 +121,21 @@ input {
     color: blueviolet;
     text-align:left;
     font-size: 12px;
+    font-weight:600;
 }
 
 .dot {
-    height: 8px;
-    width: 8px;
-    border-radius: 4px;
     background: white;
     position: absolute;
+}
+
+#ErrorDiv {
+    display: block;
+    position:relative;
+    margin: 10px 0px 10px 0px;
+    background-color: OldLace;
+    width: 600px;
+    height: 15px;
+    text-align: left;
+    color: red;
 }
