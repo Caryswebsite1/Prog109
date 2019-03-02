@@ -25,7 +25,7 @@ const G_MaxIndex = 4;  // 5 slides only, 0 - 4.
 let G_SlideNum = 0;  // slide index tracker
 
 
-let G_IntervalTimer = "";
+let G_IntervalTimer = ""; // this will be the interval timer variable when it is set.
 
 const G_WaitTime = 6000;  // time between slides in milliseconds  NOTE:  make sure this matches fade time!
 
@@ -84,10 +84,15 @@ function init() {
     // set starting slide number
     G_SlideNum = 0;
 
+    // set up for static showing to start:
+    G_MainSlide.setAttribute("class", "");
+    G_MainSlide.style.opacity = 1;
+    G_MainCaption.setAttribute("class", "");
+    G_MainCaption.style.opacity = 1;
+
+
     ShowCurrentSlide();
 
-    // set up interval timer and show first slide
-    G_IntervalTimer = setInterval(ShowCurrentSlide, G_WaitTime);
    
 }// end init
 
