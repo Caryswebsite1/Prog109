@@ -93,7 +93,7 @@ function init() {
     // on slower connections, image loading time is causing a stutter effect first time through..
     // sooooo, trying something here to eliminate that. Kind of a preload effort for the images:
 
-    let tempArray[] = [];
+    let tempArray = [];
 
     for (i = 0; i <= G_MaxIndex; i++) {
         tempArray[i] = document.createElement("image");
