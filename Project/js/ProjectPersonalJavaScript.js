@@ -243,8 +243,7 @@ function ToggleHomeAudio() {
 
     }
     else {
-        // turning audio off.
-        let myAudio = document.querySelector("#MainAudio");
+        // turning audio off.    
         myAudio.pause();    // pauses Audio
         bAudioOn = false;
         HOME_AUDIO.textContent = "Audio On";
