@@ -43,46 +43,51 @@
     <div id="topmenu">
 
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="About.html">About</a></li>
-            <li><a href="Coursework.html">Coursework</a></li>
-            <li><a href="Artifacts.html">Artifacts</a></li>
-            <li><a href="ModuleAssignments.html">Module Assignments</a></li>
-            <li><a href="ContactMe.html">Contact Me</a></li>
-            <li><a href="PersonalInterests.html">Personal Interests</a></li>
+            <li><a href="index.html" tabindex="1">Home</a></li>
+            <li><a href="About.html" tabindex="2">About</a></li>
+            <li><a href="Coursework.html" tabindex="3">Coursework</a></li>
+            <li><a href="Artifacts.html" tabindex="4">Artifacts</a></li>
+            <li><a href="ModuleAssignments.html" tabindex="5">Module Assignments</a></li>
+            <li><a href="ContactMe.html" tabindex="6">Contact Me</a></li>
+            <li><a href="PersonalInterests.html" tabindex="7">Personal Interests</a></li>
         </ul>
 
     </div>  <!-- end div Top Menu -->
 
     <div id="contentWrapper">
 
-        <div id="myHeader">Contact Me!</div>
+        <div id="myHeader" tabindex="8">Contact Me!</div>
 
 
         <!--  <form autocomplete="off"> -->
-
-        <form action="Thankyou.html" method="get" name="myContact">
+        <form id="ValForm" autocomplete="off" action="Thankyou.html" onsubmit="return ValidateForm();">
             <fieldset id="ContactingMeInfo">
-                <legend>Contact Information</legend>
+                <legend tabindex="9">Contact Information: &nbsp;&nbsp; All Fields Required!</legend>
 
-                <label for="YourName">Your Name: </label>
-                <input type="text" name="YourName" id="YourName" placeholder="Your Name" />
+                <label for="FirstName">First Name (max 20):</label>
+                <input type="text" name="FirstName" id="FirstName" placeholder="First Name" />
+                <div id="FirstNameError" class="ErrorMsg"></div>
 
-                <label for="EmailInput">Your Email:</label>
-                <input type="text" name="EmailInput" id="EmailInput" placeholder="Your Email" />
+                <label for="LastName">Last Name (max 50): </label>
+                <input type="text" name="LastName" id="LastName" placeholder="Last Name" />
+                <div id="LastNameError" class="ErrorMsg"></div>
 
-                <label for="SubjectInput">Subject:</label>
+                <label for="Email">Your Email:</label>
+                <input type="text" name="Email" id="Email" placeholder="Your Email" />
+                <div id="EmailError" class="ErrorMsg"></div>
+
+                <label for="SubjectInput">Subject (max 50):</label>
                 <input type="text" name="SubjectInput" id="SubjectInput" placeholder="Subject" />
+                <div id="SubjectError" class="ErrorMsg"></div>
 
-                <label for="CommentsInput">Comments:</label>
-                <div id="Comments">
-                    <input type="text" name="Comments" id="CommentsInput" placeholder="What can I do for you!?" />
-                </div> <!-- end div Comments -->
+                <label for="CommentsInput">Comments (max 400):</label>
+                <textarea name="Comments" id="CommentsInput" placeholder="What can I do for you!?"></textarea>
+                <div id="CommentError" class="ErrorMsg"></div>
 
-                <br />
+               
                 <div id="ContactSubmit">
                     <!--  <input type="button" id="formSubmitButton" value="Submit" />  -->
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Send" />
                 </div>
 
             </fieldset>
@@ -90,5 +95,8 @@
 
     </div> <!-- end div content wrapper -->
 
+
+    <!-- link in validator code. -->
+    <script src="js/ProjectContactMeJavaScript.js"></script>
 </body>
 </html>

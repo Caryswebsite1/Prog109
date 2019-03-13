@@ -21,23 +21,77 @@
     <div id="topmenu">
 
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="About.html">About</a></li>
-            <li><a href="Coursework.html">Coursework</a></li>
-            <li><a href="Artifacts.html">Artifacts</a></li>
-            <li><a href="ModuleAssignments.html">Module Assignments</a></li>
-            <li><a href="ContactMe.html">Contact Me</a></li>
-            <li><a href="PersonalInterests.html">Personal Interests</a></li>
+            <li><a href="index.html" tabindex="1">Home</a></li>
+            <li><a href="About.html" tabindex="2">About</a></li>
+            <li><a href="Coursework.html" tabindex="3">Coursework</a></li>
+            <li><a href="Artifacts.html" tabindex="4">Artifacts</a></li>
+            <li><a href="ModuleAssignments.html" tabindex="5">Module Assignments</a></li>
+            <li><a href="ContactMe.html" tabindex="6">Contact Me</a></li>
+            <li><a href="PersonalInterests.html" tabindex="7">Personal Interests</a></li>
         </ul>
 
 
     </div>  <!-- end div Top Menu -->
 
-    <div id="contentWrapper">
-    
-    <div id="myHeader">Personal Interests</div>
+    <div id="PersonalContentWrapper">
+
+        <div id="myHeader" tabindex="8">Personal Interests</div>
+
+        <div id="Specials">
+            <button id="PersonalHomeAudioButton" tabindex="9">Audio On</button>
+
+            <div id="GalacticCruise" tabindex="16">
+                <a href="https://caryswebsite1.github.io/Prog-209/Module%206/SpaceTravel/SpaceTravel.html" target="_blank" tabindex="9">
+                    <img id="CruiseLiner" src="Images/LuxLiner4.jpg" alt="Galactic Cruise Lines Luxury Cruise Ship" title="Galactic Cruise Lines" />
+                    <br />Galactic Cruise Lines!
+                </a>
+            </div>
+        </div><!-- end div Specials -->
+
+        <div class="MainTextClass" id="PersonalText" tabindex="10">
+            <p>
+                Personal Interests..  &nbsp; ummmmm.....  Lots? <br />
+                I have many interests in many fields, ranging from cooking at a camp fire to space travel,
+                ancient times to midieval to future, fantasy to hard physics. <br />
+                On this page are a few links to a couple of them.  <br />
+                NOTE: &nbsp; The video takes a few seconds after you click it to load up and start.
+                &nbsp; So be a little patient with it.  Clicking again pauses it.<br />
+                Be aware, the "Galactic Cruise Lines" link has a big audio file that takes a bit to load. &nbsp; 
+                It also opens in a new page that has automatic audio that loops.
+            </p>
+        </div>
+
+        <div id="SpacecraftPictures">
+
+            <figure id="SpaceMainFigure">
+                <img class="myfading" id="SpaceMainSlide" src="Images/Space/TitanIVLauchB.jpg" alt="Slide 0" title="" />
+
+                <figcaption class="myfading" id="SpaceMainCaption" tabindex="11">something should be here</figcaption>
+
+            </figure>
+
+            <div id="SpaceButtonDiv">
+                <button id="SpacePrevBtn" tabindex="12">Previous</button>
+                <button id="SpaceNextBtn" tabindex="13">Next</button>
+                <button id="SpaceStopResume" data-State="Resume" tabindex="14">Resume Show</button>
+            </div>
+
+        </div> <!-- end div Spacecraft Pics -->
+
+
+        <div id="LaunchVideo">
+            <video id="SpaceXLaunch" tabindex="15">
+                <source src="video/SpaceX_Falcon_Heavy_Launch.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <!-- <div id="ScubaPictures"></div> -->
+
 
     </div> <!-- end div content wrapper -->
+
+
+    <!-- Link in the javascript for the page. -->
+    <script src="js/ProjectPersonalJavaScript.js"></script>
 
 </body>
 </html>
