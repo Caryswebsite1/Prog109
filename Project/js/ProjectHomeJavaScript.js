@@ -27,7 +27,7 @@ ImagesToPreload[1] = new Image();
 ImagesToPreload[1].src = "Images/OrionNebula_cropped_1400.png";
 //////////////////////////////////////////////////////////////////////////////////////////
 
-console.log("eE1: " + Enterprise[0].src + "  E2: " + Enterprise[1].src );
+
 
 // add event listeners
 HOME_AUDIO.addEventListener("click", ToggleHomeAudio, false);
