@@ -156,6 +156,7 @@ a:active {
     font-size: 1.4vw;
 }
 
+
 #PersonalText {
     width: 25%;
     clear: left;
@@ -317,7 +318,7 @@ a:active {
 /* Module Assignments Page*/
 
 #AssignmentList {
-    width: 30%;
+    width: 60%;
     padding: 0px 0px 0px 10px;
     float: left;
     margin: 10px 0px 0px 50px;
