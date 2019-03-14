@@ -13,17 +13,19 @@ var myTL1 = new TimelineMax();
 
 console.log("button is: " + HOME_AUDIO);
 
-// load up images first:
+/////////////////////////////////////////////////////////////////////////////////////////
+// preload images method.  Requires the creation of new "images"
+// and assigning the image objects the source of the image you want to preload.
+// Unfortunately, it appears you can't use these image object.src in code below to 
+// assign to an existing page element.  Have to use the url with the same path.
 let Enterprise = [];
-Enterprise[0] = "url('Images/USSEnterpriseFixed.png')";
-Enterprise[1] = "url('Images/EnterpriseLeaving.png')";
+Enterprise[0] = new Image();
+Enterprise[0].src = "Images/USSEnterpriseFixed.png";
+Enterprise[1] = new Image();
+Enterprise[1].src = "Images/EnterpriseLeaving.png";
+//////////////////////////////////////////////////////////////////////////////////////////
 
-let myLoader = document.createElement("div");
-myLoader.opacity = 0;
-myLoader.backgroundImage = "url('Images/EnterpriseLeaving.png')";
-myLoader.setAttribute("width", "10px");
-myLoader.setAttribute("height", "10px");
-myLoader.setAttribute("top", "150px");
+console.log("eE1: " + Enterprise[0].src + "  E2: " + Enterprise[1].src );
 
 // add event listeners
 HOME_AUDIO.addEventListener("click", ToggleHomeAudio, false);
@@ -49,13 +51,14 @@ function ToggleHomeAudio() {
 
             // Enter the USS Enterprise!
             // reset start locations for ship and warpstar incase this is not the first time through.
-            myTL1.to('#Enterprise', 10, { scale: 0.001, backgroundImage: Enterprise[0], top: 100, left:0, ease: Power0.easeNone })
+            myTL1.to('#Enterprise', 10, { scale: 0.001, backgroundImage: "url('Images/USSEnterpriseFixed.png')", top: 100, left:0, ease: Power0.easeNone })
                 .to('#WarpStar', 0.01, { scale: 0.01, top: 240, left: 275, ease: Power0.easeNone })
                 .to('#WarpStar', 0.5, { opacity: 1, scale: 0.5, rotation: 360, ease: Power0.easeNone })
                 .to('#Enterprise', 0.01, { opacity: 1, scale: 0.001, ease: Power0.easeNone })
                 .to('#WarpStar', 0.5, { opacity: 0, scale: 0.01, rotation: -360, ease: Power0.easeNone })
                 .to('#Enterprise', 12.0, { scale: 1, top: 200, left: 50, ease: Power0.easeNone }, '-=0.3') 
-                .to('#Enterprise', 0.01, { backgroundImage: Enterprise[1], ease: Power0.easeNone })
+                //.to('#Enterprise', 0.01, { backgroundImage: Enterprise[1].src, ease: Power0.easeNone })
+                .to('#Enterprise', 0.01, { backgroundImage: "url('Images/EnterpriseLeaving.png')", ease: Power0.easeNone })
                 .to('#Enterprise', 12.0, { scale: 0.01, top: 300, left: 650, ease: Power0.easeNone }) 
                 .to('#Enterprise', 0.01, { opacity: 0, ease: Power0.easeNone })
                 .to('#WarpStar', 0.01, { top: 440, left: 925, ease: Power0.easeNone })
