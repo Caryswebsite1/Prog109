@@ -243,7 +243,7 @@ function ToggleHomeAudio() {
         }
         console.log("src = " + myAudio.src);
         bAudioOn = true;
-        HOME_AUDIO.textContent = "Audio Off";
+        HOME_AUDIO.textContent = "Play List Off";
 
         console.log("turned audio on.");
 
@@ -252,7 +252,7 @@ function ToggleHomeAudio() {
         // turning audio off.
         myAudio.pause();    // pauses Audio
         bAudioOn = false;
-        HOME_AUDIO.textContent = "Audio On";
+        HOME_AUDIO.textContent = "Play List On";
         console.log("turned audio off.");
     }
 
@@ -300,7 +300,7 @@ function ResetAudio() {
         myAudio.volume = 0.5;
         bAudioFirstRun = true;
         bAudioOn = false;
-        HOME_AUDIO.textContent = "Audio On";
+        HOME_AUDIO.textContent = "Play List On";
     }
     else {
         // current song ended.  set up the next one. 
