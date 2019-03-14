@@ -18,6 +18,12 @@ let Enterprise = [];
 Enterprise[0] = "url('Images/USSEnterpriseFixed.png')";
 Enterprise[1] = "url('Images/EnterpriseLeaving.png')";
 
+let myLoader = document.createElement("div");
+myLoader.opacity = 0;
+myLoader.backgroundImage = "url('Images/EnterpriseLeaving.png')";
+myLoader.setAttribute("width", "10px");
+myLoader.setAttribute("height", "10px");
+myLoader.setAttribute("top", "150px");
 
 // add event listeners
 HOME_AUDIO.addEventListener("click", ToggleHomeAudio, false);
