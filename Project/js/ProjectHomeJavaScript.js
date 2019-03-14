@@ -18,11 +18,13 @@ console.log("button is: " + HOME_AUDIO);
 // and assigning the image objects the source of the image you want to preload.
 // Unfortunately, it appears you can't use these image object.src in code below to 
 // assign to an existing page element.  Have to use the url with the same path.
-let Enterprise = [];
-Enterprise[0] = new Image();
-Enterprise[0].src = "Images/USSEnterpriseFixed.png";
-Enterprise[1] = new Image();
-Enterprise[1].src = "Images/EnterpriseLeaving.png";
+let ImagesToPreload = [];
+ImagesToPreload[0] = new Image();
+ImagesToPreload[0].src = "Images/USSEnterpriseFixed.png";
+ImagesToPreload[1] = new Image();
+ImagesToPreload[1].src = "Images/EnterpriseLeaving.png";
+ImagesToPreload[1] = new Image();
+ImagesToPreload[1].src = "Images/OrionNebula_cropped_1400.png";
 //////////////////////////////////////////////////////////////////////////////////////////
 
 console.log("eE1: " + Enterprise[0].src + "  E2: " + Enterprise[1].src );
