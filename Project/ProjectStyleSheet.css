@@ -320,12 +320,11 @@ a:active {
 #ModuleText {
     width: 25%;
     float: left;
-    font-size: 1.4vw;
 }
 
 
 #AssignmentList {
-    width: 60%;
+    width: 45%;
     padding: 0px 0px 0px 10px;
     float: left;
     margin: 10px 0px 0px 50px;
