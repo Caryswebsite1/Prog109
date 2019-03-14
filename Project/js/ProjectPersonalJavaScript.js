@@ -133,6 +133,7 @@ function Init() {
     for (i = 0; i <= G_MaxIndex; i++) {
         G_MainSlide.setAttribute("src", G_MainSlideArray[i][0]);
     }
+
     // --------------------------------------------------------------------------------------
     // At this point, we have hopefully forced the load of the images without showing them...
     //-----------------------------------------------------------------------------------------
@@ -184,7 +185,10 @@ function Init() {
 }// end init
 
 
-
+/* ******************************************************
+ * ToggleHomeAudio:
+ * toggles Audio button on or off and stops or resumes Audio.
+ * ******************************************************* */
 function ToggleHomeAudio() {
 
     console.log("in Toggle");
@@ -218,10 +222,12 @@ function ToggleHomeAudio() {
             // not first run. don't redisplay animation.
             if (myAudio.ended) {
                 console.log("song ended. trying to do next one.");
+                console.log("current Song: " + currentSong);
 
                 // increment song counter
                 if (currentSong < (MyPlayList.length - 1)) {
                     currentSong += 1;
+                    console.log("New Song: " + currentSong);
                 }
                 else {
                     currentSong = 0;
@@ -243,7 +249,7 @@ function ToggleHomeAudio() {
 
     }
     else {
-        // turning audio off.    
+        // turning audio off.
         myAudio.pause();    // pauses Audio
         bAudioOn = false;
         HOME_AUDIO.textContent = "Audio On";
@@ -254,6 +260,11 @@ function ToggleHomeAudio() {
 }// end ToggleHomeAudio
 
 
+
+/* ******************************************************
+ * ToggleButtonBorder:
+ * toggles Audio button border to indicate focus. 
+ * ******************************************************* */
 function ToggleButtonBorder() {
     // make border green if we have focus
     if (!bButtonFocus) {
@@ -272,6 +283,13 @@ function ToggleButtonBorder() {
 }// end toggle button border
 
 
+
+/* ******************************************************
+ * ResetAudio:
+ * Resets Audio: called by system in response to the user
+ * hitting the stop button or if the current song ended.
+ * Will either insure Stop or start new song.
+ * ******************************************************* */
 function ResetAudio() {
     // if we are here and bAudioOn == false then the user elected to pause the song
     // which tripped the event that called us. In such a case, Dont turn it back on!
