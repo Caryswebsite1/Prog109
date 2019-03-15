@@ -8,6 +8,7 @@ let bAudioOn = false;
 let bAudioFirstRun = true;
 let bButtonFocus = false;
 
+
 // animation accompanyment
 var myTL1 = new TimelineMax();
 
@@ -52,8 +53,10 @@ function ToggleHomeAudio() {
             myAudio.play();
 
             // Enter the USS Enterprise!
-            // reset start locations for ship and warpstar incase this is not the first time through.
-            myTL1.to('#Enterprise', 10, { scale: 0.001, backgroundImage: "url('Images/USSEnterpriseFixed.png')", top: 100, left:0, ease: Power0.easeNone })
+            // first make the ship and warp star displayable, then reset start locations for ship and warpstar incase this is not the first time through.
+            myTL1.to('#Enterprise', 0.01, { display: "initial", ease: Power0.easeNone })
+                .to('#WarpStar', 0.01, { display: "initial", ease: Power0.easeNone})
+                .to('#Enterprise', 10, { scale: 0.001, backgroundImage: "url('Images/USSEnterpriseFixed.png')", top: 100, left: 0, ease: Power0.easeNone })
                 .to('#WarpStar', 0.01, { scale: 0.01, top: 240, left: 275, ease: Power0.easeNone })
                 .to('#WarpStar', 0.5, { opacity: 1, scale: 0.5, rotation: 360, ease: Power0.easeNone })
                 .to('#Enterprise', 0.01, { opacity: 1, scale: 0.001, ease: Power0.easeNone })

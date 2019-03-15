@@ -153,12 +153,16 @@ function GenericFormValidator(itemID, itemText, itemErrorID, MaxLength, NotAllow
     }// end else this is not an array value
 
 
-    // if check failed, print out the error message right under the failing item.
+    // if check failed, enable the error message element and print out the error message right under the failing item.
     if (!bValidateOK) {
+        //errMsgEl.setAttribute("visibility", "visible");
         errMsgEl.innerHTML = errorMessage;
+        console.log("validate fail. ErrmsgE1 is:");
+        console.log(errMsgEl);
     }
     else {
         // all good. clear error message
+        //errMsgEl.setAttribute("visibility", "hidden");
         errMsgEl.innerHTML = "";
     }
 
