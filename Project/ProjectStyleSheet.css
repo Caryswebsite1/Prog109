@@ -1,5 +1,4 @@
-﻿
-/* Make sure older browsers at least display the new stuff as block */
+﻿/* Make sure older browsers at least display the new stuff as block */
 header, section, footer, aside, nave, article, figure, figcaption {
     display: block;
 }
@@ -9,41 +8,76 @@ header, section, footer, aside, nave, article, figure, figcaption {
 *************************************************************************************************
 */
 
-body, html {
-    height: 100%;
-    margin: 0;
-    /*background-color: aqua;*/
+/*body, html {
+    height: 100%;*/
+    /* margin 0 keeps from having a scroll bar outside of main content wrapper */
+    /*margin: 0px;
     font-family: 'KolarRegular';
     font-weight: normal;
     font-style: normal;
-}
+}*/
 
-
-
-body {
-    background-image: url("Images/OrionNebula_cropped_1400.jpg");
-    /* Full height */
-    height: 100%;
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
+html {
+    background: url("Images/OrionNebula_cropped_1400.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    z-index: 0;
 }
 
+/* flex attempt */
+body {
+    font-family: 'KolarRegular';
+    font-weight: normal;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin: 0px 0px 0px 0px;
+}
 
-
-
-#topmenu {
+#FlexWrapper {
     top: 0px;
     left: 0px;
     width: 100%;
+    padding: 0px 0px 0px 0px;
+    flex: 1 1 auto;
+    /* note need a top margin => to menu height + border*/
+    margin: 41px 0px 46px 0px;
+    /*border:5px solid red;*/
+}
+
+#FlexFooter {
+    position:fixed;
+    display:block;
+    text-align: right;
+    font-size: 12px;
+    height: 34px;
+    min-height: 34px;
+    width: 98%;
+    bottom: 0px;
+    margin: 0% 0% 0% 0%;
+}
+
+
+#topmenu {
+    /* set position to fixed to keep showing during scroll.  Sadly this eliminates
+        the ability to center via margins as the left side is messed up and if you
+        try to use margins, it seems to have an auto +1% or 2% to the left if you 
+        set the left to anything! 100% width pushes the border over the edge of the
+        right side of the view pane so doing a bit less as a "close enough".
+    */
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width: 99.3%;
     padding: 8px 0px 0px 0px;
     height: 30px;
     min-height: 30px;
     overflow: auto;
     background: rgbA(0, 0, 200, 0.5);
     border: 5px inset blue;
+    margin:0% 0% 0% 0%;
 }
 
     #topmenu ul {
@@ -102,18 +136,6 @@ a:active {
 }
 
 
-/* need a wrapper for everything to have it show ontop of the image.
-    Position it right below the menu
-*/
-
-#contentWrapper {
-    position: fixed;
-    top: 38px;
-    left: 0px;
-    width: 100%;
-    padding: 0px 0px 0px 0px;
-    height: 100%;
-}
 
 
 #myHeader {
@@ -141,6 +163,22 @@ a:active {
 }
 
 
+.Validators {
+    display: block;
+    position: relative;
+    float: left;
+    margin: 6px 0px 0px 10px;
+}
+
+
+.DateDisplay {
+    display: inline;
+    position: relative;
+    /*float: left;*/
+    margin: 0px 20px 0px 0px;
+}
+
+
 
 
 /************************************************************************************************
@@ -148,9 +186,9 @@ a:active {
 *************************************************************************************************
 */
 
-
+/* use css animation for button background color changes */
 #HomeAudioButton {
-    display:block;
+    display: block;
     margin: 0% 0% 1% 1%;
     color: aqua;
     background-color: rgbA(0, 0, 0, 0);
@@ -165,61 +203,56 @@ a:active {
 }
 
 
-/* css animation method */
-/*#hotel3 {
-    margin-top: 1em;
-    color: yellow;
-    animation-name: redAlert;
-    animation-duration: 6s;
-    animation-iteration-count: infinite;
-}*/
-
 /* standard animation tag*/
 @keyframes redAlert {
-    /* cycle from transparent to yellow to red and back continuously*/
+    /* cycle from transparent to our std semi transparent blue to red and back continuously*/
     0% {
         background-color: rgbA(0, 0, 0, 0);
     }
 
     25% {
         background-color: rgbA(0, 0, 200, 0.5);
-        ;
     }
 
     50% {
         background-color: rgbA(255, 0, 0, 1);
-        ;
     }
 
     75% {
         background-color: rgbA(0, 0, 200, 0.5);
-        ;
     }
 
     100% {
         background-color: rgbA(0, 0, 0, 0);
-        ;
     }
 }
-/* end of sunset animation */
+/* end of redAlert animation */
 
 
 /* Safari 4.0 - 8.0 */
-/*@-webkit-keyframes sunsetAnimation {*/
-    /* cycle from yellow to red and back continuously*/
-    /*0% {
-        background-color: yellow;
+@-webkit-keyframes redAlert {
+    /* cycle from transparent to our std semi transparent blue to red and back continuously*/
+    0% {
+        background-color: rgbA(0, 0, 0, 0);
+    }
+
+    25% {
+        background-color: rgbA(0, 0, 200, 0.5);
     }
 
     50% {
-        background-color: red;
+        background-color: rgbA(255, 0, 0, 1);
+    }
+
+    75% {
+        background-color: rgbA(0, 0, 200, 0.5);
     }
 
     100% {
-        background-color: yellow;
+        background-color: rgbA(0, 0, 0, 0);
     }
-}*/
-/* end webkit version*/
+} /*end webkit version*/
+
 
 
 #Enterprise {
@@ -233,6 +266,7 @@ a:active {
     background-size: 600px 330px;
     opacity: 0;
     z-index: 10;
+    display:none;
 }
 
 
@@ -248,6 +282,7 @@ a:active {
     background-size: 50px 50px;
     opacity: 0;
     z-index: 10;
+    display: none;
 }
 
 
@@ -277,11 +312,13 @@ a:active {
 *************************************************************************************************
 */
 
+
 #ArtifactsContainer {
+    display: block;
     position: relative;
-    top: 20%;
+    top: 15%;
     width: 80%;
-    height: 25%;
+    height: 50%;
     margin: 0 auto 0 auto;
 }
 
@@ -297,7 +334,7 @@ a:active {
 
     .Artifacts img {
         width: 100%;
-        height: 100%;
+        height: 50%;
         border: 5px inset blue;
     }
 
@@ -343,9 +380,13 @@ a:active {
 *************************************************************************************************
 */
 
+#ValForm {
+    margin: 5% 0% 0% 0%;
+    /*border: 5px solid green;*/
+}
+
 fieldset#ContactingMeInfo {
     position: relative;
-    top: 88px;
     background-color: rgbA(0, 0, 200, 0.5);
     border: 5px inset blue;
     width: 60%;
@@ -394,6 +435,7 @@ fieldset#ContactingMeInfo {
     color: red;
     width: 75%;
     text-shadow: 1px 1px 0px black; /* horizontal, virt, blur, color */
+    /*visibility: hidden;*/
 }
 
 #ContactingMeInfo #CommentError {
@@ -415,28 +457,12 @@ fieldset#ContactingMeInfo {
  *************************** Personal Interest Page  **********************************************
 ***************************************************************************************************
 */
+
 #PersonalText {
     width: 25%;
     clear: left;
     float: left;
 }
-
-
-#PersonalContentWrapper {
-    position: fixed;
-    top: 38px;
-    left: 0px;
-    width: 100%;
-    padding: 0px 0px 0px 0px;
-    height: 100%;
-    overflow: auto;
-}
-
-/*#Specials {
-    position: relative;
-    width: 100%;
-    border: 5px solid red;
-}*/
 
 
 
@@ -456,6 +482,39 @@ fieldset#ContactingMeInfo {
     float: left;
 
 }
+
+
+/* ***************************************************************
+ ****************** Galactic Cruise Lines ************************
+*/
+#GalacticCruise {
+    display: block;
+    position: relative;
+    top: 0%;
+    width: 10%;
+    height: 50px;
+    margin: 0% 0% 0% 1%;
+    text-align: center;
+    float: left;
+    border: 5px inset blue;
+}
+
+    #GalacticCruise a {
+        display: block;
+        font-family: 'KolarRegular';
+        font-weight: normal;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.0vw; /* dynamic sizing: a vw is 1% of current viewport width */
+        text-shadow: 1px 1px 1px rgb(0,0,0);
+        background-color: rgbA(0, 0, 200, 0.5);
+        background-image: url(Images/LuxLiner4.jpg);
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: inherit;
+        z-index: 5;
+    }
 
 
 
@@ -539,7 +598,7 @@ fieldset#ContactingMeInfo {
     width: 300px;
     height: 250px;
     border: 5px inset blue;
-    margin: 0% auto 0% auto;
+    margin: 0% auto 0% 3%;
 }
 
 
@@ -561,55 +620,25 @@ fieldset#ContactingMeInfo {
         font-size: 1.25vw; /* dynamic sizing: a vw is 1% of current viewport width */
         text-align: center;
         text-shadow: 1px 1px 1px rgb(0,0,0);
-        margin: 0px auto;
+        margin: 0% auto 0% 3%;
         width: 300px;
         border: 5px inset blue;
     }
 
 
-/* ***************************************************************
-    *************** Galactic Cruise Lines ************************
-*/
-#GalacticCruise {
-    display: block;
-    position: relative;
-    top: 0%;
-    width: 10%;
-    height: 50px;
-    margin: 0% 0% 0% 1%;
-    text-align: center;
-    float: left;
-    border: 5px inset blue;
-}
-
-    #GalacticCruise a {
-        display: block;
-        font-family: 'KolarRegular';
-        font-weight: normal;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1.1vw; /* dynamic sizing: a vw is 1% of current viewport width */
-        text-shadow: 1px 1px 1px rgb(0,0,0);
-        background-color: rgbA(0, 0, 200, 0.5);
-        background-image: url(Images/LuxLiner4.jpg);
-        background-position: center;
-        background-size: cover;
-        width: 100%;
-        height: inherit;
-        z-index: 5;
-    }
 
 
 /* ***************************************************************
-    *************** Scuba Pictures ************************
+ ****************** Scuba Pictures *******************************
 */
 
 #ScubaPictures{
     display: block;
     float: left;
     width: 60%;
-    height: 150px;
-    margin: 3% 0% 0% 4%;
+    height: 200px;
+    margin: 5% 0% 0% 4%;
+    /*border:5px solid orange;*/
 }
 
     #ScubaPictures figure {
@@ -619,13 +648,14 @@ fieldset#ContactingMeInfo {
         height: 100%;
         float: left;
         margin: 0% 0% 0% 5%;
+        /*border: 5px solid green;*/
     }
 
     #ScubaPictures img {
         display: block;
         position: relative;
         width: 100%;
-        height: 100%;
+        height: 60%;
         border: 5px inset blue;
     }
 
