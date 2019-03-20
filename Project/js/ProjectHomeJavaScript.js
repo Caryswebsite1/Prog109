@@ -10,7 +10,10 @@ let bButtonFocus = false;
 
 
 // animation accompanyment
-var myTL1 = new TimelineMax();
+let myTL1 = new TimelineMax();
+let myTL2 = new TimelineMax();
+let myTL3 = new TimelineMax();
+
 
 console.log("button is: " + HOME_AUDIO);
 
@@ -52,24 +55,120 @@ function ToggleHomeAudio() {
             myAudio.volume = 0.5;
             myAudio.play();
 
-            // Enter the USS Enterprise!
-            // first make the ship and warp star displayable, then reset start locations for ship and warpstar incase this is not the first time through.
-            myTL1.to('#Enterprise', 0.01, { display: "initial", ease: Power0.easeNone })
-                .to('#WarpStar', 0.01, { display: "initial", ease: Power0.easeNone})
-                .to('#Enterprise', 10, { scale: 0.001, backgroundImage: "url('Images/USSEnterpriseFixed.png')", top: 100, left: 0, ease: Power0.easeNone })
+
+            myTL1.delay(10.0)
+                .to('#myHeader', 2.0, { opacity: 0, scale: 0.01, rotation: 720, ease: Power0.easeNone })
+                .to('#HomeMainText', 2.0, { opacity: 0, scale: 0.01, ease: Power0.easeNone }, "-=2.0")
+
+                //Enter the USS Enterprise!
+                //first make the ship and warp star displayable, then reset start locations for ship and warpstar incase this is not the first time through.
+                .to('#Enterprise', 0.01, { display: "initial", ease: Power0.easeNone })
+                .to('#WarpStar', 0.01, { display: "initial", ease: Power0.easeNone })
+                .to('#Enterprise', 0.01, { scale: 0.001, backgroundImage: "url('Images/USSEnterpriseFixed.png')", top: 100, left: 0, ease: Power0.easeNone })
                 .to('#WarpStar', 0.01, { scale: 0.01, top: 240, left: 275, ease: Power0.easeNone })
                 .to('#WarpStar', 0.5, { opacity: 1, scale: 0.5, rotation: 360, ease: Power0.easeNone })
                 .to('#Enterprise', 0.01, { opacity: 1, scale: 0.001, ease: Power0.easeNone })
                 .to('#WarpStar', 0.5, { opacity: 0, scale: 0.01, rotation: -360, ease: Power0.easeNone })
-                .to('#Enterprise', 12.0, { scale: 1, top: 200, left: 50, ease: Power0.easeNone }, '-=0.3') 
-                //.to('#Enterprise', 0.01, { backgroundImage: Enterprise[1].src, ease: Power0.easeNone })
+                .to('#Enterprise', 12.0, { scale: 1, top: 200, left: 50, ease: Power0.easeNone }, '-=0.3')
+                //.to('#Enterprise', 0.01, { backgroundImage: Enterprise[1].src, ease: Power0.easeNone }) this didn't work.
                 .to('#Enterprise', 0.01, { backgroundImage: "url('Images/EnterpriseLeaving.png')", ease: Power0.easeNone })
-                .to('#Enterprise', 12.0, { scale: 0.01, top: 300, left: 650, ease: Power0.easeNone }) 
-                .to('#Enterprise', 0.01, { opacity: 0, ease: Power0.easeNone })
+                .to('#Enterprise', 12.0, { scale: 0.01, top: 300, left: 650, ease: Power0.easeNone })
+                .to('#Enterprise', 0.01, { opacity: 0, display: "none", ease: Power0.easeNone })
                 .to('#WarpStar', 0.01, { top: 440, left: 925, ease: Power0.easeNone })
                 .to('#WarpStar', 0.01, { opacity: 1, scale: 0.01, ease: Power0.easeNone })
                 .to('#WarpStar', 0.5, { scale: 0.5, rotation: 360, ease: Power0.easeNone })
-                .to('#WarpStar', 0.5, { opacity: 0, rotation: -360, scale: 0.01, ease: Power0.easeNone });
+                .to('#WarpStar', 0.5, { opacity: 0, rotation: -360, scale: 0.01, ease: Power0.easeNone })
+
+
+                // start starfield fadein right as the warp star is fading out. Current total time for above: 38.08 - 1.3 = 36.78
+                .call(MakeStarfield, [false, 400, 800, 500, 2, 10000, 50, 100], this, '-=0.0')
+                .to('html', 0.1, { backgroundImage: "none", ease: Power0.easeNone }, '-=0.25')
+                .to('#WarpStarfield', 0.5, { opacity: 1, ease: Power0.easeNone });
+                //.call(MakeStarfield, [false, 400, 800, 500, 2, 10000, 50, 100], this, '-=1.25');
+               
+
+            // ok, end starfield and do rest of animation: have to delay for all the above: 
+            myTL2.delay(44.0)
+                .to('#WarpStar', 0.01, { top: 350, left: 550, ease: Power0.easeNone })
+                .to('#WarpStar', 0.01, { opacity: 1, scale: 0.01, ease: Power0.easeNone })
+                .to('#WarpStarfield', 1.0, { opacity: 0, ease: Power0.easeNone })
+                //.to('#WarpStarfield', 0.01, { display: "none", ease: Power0.easeNone })
+                .to('#WarpStar', 1.0, { scale: 18, rotation: 720, ease: Power0.easeNone }, "-=0.5")
+                .to('html', 0.1, { backgroundColor: "white", ease: Power0.easeNone })
+                .to('#WarpStar', 0.1, { opacity: 0, scale: 0.01, ease: Power0.easeNone })
+                //.to('#WarpStar', 0.1, { display: "none", ease: Power0.easeNone })
+                .to('html', 0.01, { backgroundColor: "black", ease: Power0.easeNone })
+                .to('#DeepSpace9', 0.01, { display: "initial", top: 80, left: 120, ease: Power0.easeNone })
+                .to('#DeepSpace9', 0.01, { scale: 0.001, backgroundImage: "url('Images/DS9MessyTrans.png')", ease: Power0.easeNone })
+                .to('#DeepSpace9', 3.0, { opacity: 1, scale: 1, ease: Power0.easeNone })
+                .to('#DeepSpace9', 3.0, { scale: 1.01, ease: Power0.easeNone })
+
+                // Create sun..
+                .to('#SunInSpace', 0.01, { display: "initial", ease: Power0.easeNone })
+                .to('#SunInSpace', 0.01, { opacity: 1, scale: 0.05, ease: Power0.easeNone })
+
+
+                // start turn to left
+                .to('#DeepSpace9', 5.0, { left: 1500, ease: Power0.easeNone })
+                .to('#SunInSpace', 5.0, { left: 300, ease: Power0.easeNone }, '-=5.0')
+
+                // Advance toward sun
+                .to('#SunInSpace', 3.0, { scale: 0.5, ease: Power0.easeNone })
+                .to('#DeepSpace9', 0.01, { opacity: 0, ease: Power0.easeNone })
+                .to('#SunInSpace', 1.0, { scale: 3.0, ease: Power0.easeNone })
+                .to('#SunInSpace', 0.7, { top: 500, left: 1200, ease: Power0.easeNone }, '-=0.25')
+
+                // next warp sequence;  going back to nebula
+                //.to('#WarpStar', 0.1, { display: "initial", ease: Power0.easeNone })
+                .to('#WarpStar', 0.01, { opacity: 1, ease: Power0.easeNone })
+                .to('#WarpStar', 1.0, { scale: 18, rotation: -720, ease: Power0.easeNone }, "-=0.5")
+
+                // make sun disapear in the whiteness and reset ships, ds9 and sun to starting positions.
+                .to('#SunInSpace', 0.1, { opacity: 0, ease: Power0.easeNone }, "-= 0.75")
+                .to('html', 0.1, { backgroundColor: "white", ease: Power0.easeNone })
+                .to('#SunInSpace', 0.01, { scale: 1.0, top: 100, left: -1000, display: "none", ease: Power0.easeNone })
+                .to('#DeepSpace9', 0.01, { scale: 1.0, top: 100, left: 100, display: "none", ease: Power0.easeNone })
+                .to('#Enterprise', 0.01, { scale: 1.0, top: 125, left: 0, display: "none", ease: Power0.easeNone })
+
+
+
+               
+                .to('#WarpStar', 0.1, { opacity: 0, scale: 0.01, ease: Power0.easeNone })
+                //.to('#WarpStar', 0.1, { display: "none", ease: Power0.easeNone })
+                .to('html', 0.01, { backgroundColor: "black", ease: Power0.easeNone })
+                //.to('#WarpStarfield', 0.01, { display: "initial", ease: Power0.easeNone })
+                .to('#WarpStarfield', 0.1, { opacity: 1, ease: Power0.easeNone })
+                .call(MakeStarfield, [false, 400, 800, 500, 2, 10000, 50, 100], this, '-=1.0');
+                //.to('#WarpStarfield', 2.0, { rotation: 720, ease: Power0.easeNone });
+
+            // due to call to makestarfield, need new timeline here.
+            myTL3.delay(70)
+                .to('#WarpStar', 0.01, { top: 350, left: 550, ease: Power0.easeNone })
+                .to('#WarpStar', 0.01, { opacity: 1, scale: 0.001, ease: Power0.easeNone })
+                .to('#WarpStarfield', 1.0, { opacity: 0, ease: Power0.easeNone })
+                //.to('#WarpStarfield', 0.01, { display: "none", ease: Power0.easeNone })
+                .to('#WarpStar', 1.0, { scale: 18, rotation: 720, ease: Power0.easeNone }, "-=0.5")
+                .to('html', 0.1, { backgroundColor: "white", ease: Power0.easeNone })
+                .to('#WarpStar', 0.1, { opacity: 0, scale: 0.01, ease: Power0.easeNone })
+                //.to('#WarpStar', 0.1, { display: "none", ease: Power0.easeNone })
+
+                // bring in endOrion pic on a black screen.
+                .to('#EndOrion', 0.01, { display: "initial", ease: Power0.easeNone })
+                .to('#EndOrion', 0.01, { scale: 0.001, ease: Power0.easeNone })
+                .to('html', 0.1, { backgroundColor: "black", ease: Power0.easeNone })
+               
+                .to('#EndOrion', 3.0, { opacity: 1, scale: 1.0, ease: Power0.easeNone })
+                .to('#EndOrion', 0.5, { opacity: 0, scale: 1.2, ease: Power0.easeNone })
+                // now switch to real background etc.
+                .to('html', 0.1, { backgroundImage: "url('Images/OrionNebula_cropped_1400.jpg')", ease: Power0.easeNone }, "-=0.25")
+
+                .to('#EndOrion', 0.01, { display: "none", ease: Power0.easeNone })
+
+                // bring back header and text.
+                .to('#myHeader', 1.0, { opacity: 1, scale: 1.0, rotation: 360, ease: Power0.easeNone })
+                .to('#HomeMainText', 1.0, { opacity: 1, scale: 1.0, ease: Power0.easeNone }, "-=1.0");
+
+
 
             bAudioFirstRun = false;
         }
