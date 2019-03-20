@@ -47,7 +47,7 @@
         <button id="HomeAudioButton" tabindex="9">Audio On</button>
 
 
-        <div class="MainTextClass" tabindex="10">
+        <div class="MainTextClass" id="HomeMainText" tabindex="10">
             Welcome to my site!  &nbsp; I hope you enjoy it. <br />
             The reason this site exists is because of the requirements of the Programming 109 class. &nbsp;
             As a result, the menu items above are prescribed by the class requirements.  &nbsp; "About" is of course, a bit about me; &nbsp;"Coursework"
@@ -56,17 +56,26 @@
             &nbsp;"Contact Me" is, as you suspect, a way to contact me, well not really but it is a form that seems to look that way, with validation;
             &nbsp;and finally, "Personal Interests" shows a few of my interests with links etc. <br />
             Even though the site is a class requirement, I have decided to give it a bit of personal flair :-) <br />
-            OH! &nbsp;  Be sure to press the Audio button even if your sound is off. &nbsp; The show is timed to the 
-            audio so it takes 10 seconds or so to show up. &nbsp; Don't miss it! <br />
-            This current version was completed on March 14,2019.
+            OH! &nbsp;  Be sure to press the Audio button. &nbsp; In addition to the sound, it triggers a 1.5 minute
+            animation which shows up a few seconds after the screen clears. &nbsp; Don't miss it! <br />
+            This current version was completed on March 19,2019.
         </div>
-
-        <div id="Enterprise"></div>
-
-        <div id="WarpStar"></div>
 
 
     </div> <!-- end FlexWrapper Div-->
+
+    <div id="Enterprise"></div>
+
+    <div id="WarpStar"></div>
+
+    <div id="DeepSpace9"></div>
+    <div id="SunInSpace"></div>
+
+    <div id="EndOrion"></div>
+
+
+    <canvas id="WarpStarfield" width="800" height="500"></canvas>
+
 
     <div class="MainTextClass" id="FlexFooter">
 
@@ -100,9 +109,11 @@
     <!-- Link in the tween max stuff -->
     <script src="TweenMax.min.js"></script>
 
+    <!-- my new Starfield stuff -->
+    <script src="js/StarfieldJavaScript.js"></script>
+
     <!-- now the main js stuff. -->
     <script src="js/ProjectHomeJavaScript.js"></script>
-
 
     <!-- Date time updater -->
     <script src="js/ProjectDateTimeScript.js"></script>
