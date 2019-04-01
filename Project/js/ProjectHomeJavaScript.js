@@ -14,6 +14,12 @@ let myTL1 = new TimelineMax();
 let myTL2 = new TimelineMax();
 let myTL3 = new TimelineMax();
 
+// pause timelines while setting up so delays will work.  otherwise seems to 
+// "run" even though not showing anything so delay times get used up.
+myTL1.pause();
+myTL2.pause();
+myTL3.pause();
+
 
 console.log("button is: " + HOME_AUDIO);
 
@@ -27,8 +33,16 @@ ImagesToPreload[0] = new Image();
 ImagesToPreload[0].src = "Images/USSEnterpriseFixed.png";
 ImagesToPreload[1] = new Image();
 ImagesToPreload[1].src = "Images/EnterpriseLeaving.png";
-ImagesToPreload[1] = new Image();
-ImagesToPreload[1].src = "Images/OrionNebula_cropped_1400.png";
+ImagesToPreload[2] = new Image();
+ImagesToPreload[2].src = "Images/OrionNebula_cropped_1400.png";
+ImagesToPreload[3] = new Image();
+ImagesToPreload[3].src = "Images/DS9MessyTrans.png";
+ImagesToPreload[4] = new Image();
+ImagesToPreload[4].src = "Images/SunMostlyTrans.png";
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -54,6 +68,11 @@ function ToggleHomeAudio() {
             myAudio.currentTime = 0;   // sets it to start at beginning of sound track.
             myAudio.volume = 0.5;
             myAudio.play();
+
+            // pause timelines while setting up.
+            myTL1.pause();
+            myTL2.pause();
+            myTL3.pause();
 
 
             myTL1.delay(10.0)
@@ -88,7 +107,7 @@ function ToggleHomeAudio() {
                
 
             // ok, end starfield and do rest of animation: have to delay for all the above: 
-            myTL2.delay(44.0)
+            myTL2.delay(47.0)
                 .to('#WarpStar', 0.01, { top: 350, left: 550, ease: Power0.easeNone })
                 .to('#WarpStar', 0.01, { opacity: 1, scale: 0.01, ease: Power0.easeNone })
                 .to('#WarpStarfield', 1.0, { opacity: 0, ease: Power0.easeNone })
@@ -142,7 +161,7 @@ function ToggleHomeAudio() {
                 //.to('#WarpStarfield', 2.0, { rotation: 720, ease: Power0.easeNone });
 
             // due to call to makestarfield, need new timeline here.
-            myTL3.delay(70)
+            myTL3.delay(73)
                 .to('#WarpStar', 0.01, { top: 350, left: 550, ease: Power0.easeNone })
                 .to('#WarpStar', 0.01, { opacity: 1, scale: 0.001, ease: Power0.easeNone })
                 .to('#WarpStarfield', 1.0, { opacity: 0, ease: Power0.easeNone })
@@ -169,6 +188,10 @@ function ToggleHomeAudio() {
                 .to('#HomeMainText', 1.0, { opacity: 1, scale: 1.0, ease: Power0.easeNone }, "-=1.0");
 
 
+            // done setting up.  Run timelines
+            myTL1.play();
+            myTL2.play();
+            myTL3.play();
 
             bAudioFirstRun = false;
         }
